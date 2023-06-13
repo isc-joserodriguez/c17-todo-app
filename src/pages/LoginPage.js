@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { login } from '../services/auth';
+import { getAll } from '../services/users';
 
 const LoginPage = () => {
   //! 1.- Manejo del estado
@@ -15,11 +17,14 @@ const LoginPage = () => {
   };
 
   //! 3.- Función para el botón
-  const clickHandler = () => {
-    console.log({
+  const clickHandler = async () => {
+    const respuesta = await login({
       email,
       password,
     });
+    console.log(respuesta);
+    const users = await getAll('respuesta.token');
+    console.log(users);
   };
 
   return (
