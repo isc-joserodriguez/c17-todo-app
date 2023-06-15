@@ -23,7 +23,7 @@ const LoginPage = () => {
       password,
     });
     console.log(respuesta);
-    const users = await getAll('respuesta.token');
+    const users = await getAll(respuesta.token);
     console.log(users);
   };
 
@@ -31,10 +31,10 @@ const LoginPage = () => {
     /* //! 3.- Estructura de """HTML""" */
     <>
       <label>Email</label>
-      <input type="text" value={email} onChange={onChangeEmail} />
+      <input type="email" value={email} onChange={onChangeEmail} />
       <br />
       <label>Password</label>
-      <input type="text" value={password} onChange={onChangePassword} />
+      <input type="password" value={password} onChange={onChangePassword} />
       <br />
       <button type="button" onClick={clickHandler}>
         Iniciar sesión

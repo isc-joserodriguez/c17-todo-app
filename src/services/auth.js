@@ -8,3 +8,12 @@ export const login = async (credenciales) => {
 
   return data;
 };
+
+export const register = async (credenciales) => {
+  const { data } = await axios.post(
+    'https://simple-server-ochre.vercel.app/register',
+    credenciales
+  );
+
+  return data;
+};
