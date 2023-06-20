@@ -12,6 +12,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import './style.css';
 
 function App() {
+  console.log('Se renderiza App');
   //! 1.- Agregué un estado para el token
   const [token, setToken] = useState(null);
 
@@ -102,13 +103,18 @@ function App() {
             text: 'Usuarios',
             show: token,
           },
+          {
+            to: '/ejemplo',
+            text: 'ejemplo',
+            show: true,
+          },
         ]}
       />
       <Routes>
         {token && privateRoutes}
         {!token && publicRoutes}
         {generalRoutes}
-        <Route path="/ejemplo" element={<Ejemplo />} />,
+        <Route path="/ejemplo/:id" element={<Ejemplo />} />,
       </Routes>
     </>
   );
