@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { register } from '../services/auth';
 
-const RegisterPage = () => {
+const RegisterPage = ({ updateToken }) => {
   //! 1.- Crear los estados
   const [formValues, setFormValues] = useState({
     nombre: '',
@@ -21,7 +21,8 @@ const RegisterPage = () => {
   const onClickHandler = async () => {
     console.log(formValues);
     const respuesta = await register(formValues);
-    console.log(respuesta.token);
+    localStorage.setItem('token', respuesta.token);
+    updateToken(respuesta.token);
   };
 
   //! 3.- Agregar las funciones en los eventos

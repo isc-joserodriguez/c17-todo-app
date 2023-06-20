@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { login } from '../services/auth';
-import { getAll } from '../services/users';
 
-const LoginPage = () => {
+const LoginPage = ({ updateToken }) => {
   //! 1.- Manejo del estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,9 +21,8 @@ const LoginPage = () => {
       email,
       password,
     });
-    console.log(respuesta);
-    const users = await getAll(respuesta.token);
-    console.log(users);
+    localStorage.setItem('token', respuesta.token);
+    updateToken(respuesta.token);
   };
 
   return (
@@ -44,3 +42,6 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+
+
