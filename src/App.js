@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Ejemplo from './Ejemplo';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -107,6 +108,7 @@ function App() {
         {token && privateRoutes}
         {!token && publicRoutes}
         {generalRoutes}
+        <Route path="/ejemplo" element={<Ejemplo />} />,
       </Routes>
     </>
   );
