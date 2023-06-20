@@ -104,7 +104,7 @@ function App() {
             show: token,
           },
           {
-            to: '/ejemplo',
+            to: '/ejemplo/0',
             text: 'ejemplo',
             show: true,
           },

@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 const Ejemplo = () => {
   //*useState
   //! Un componente únicamente se vuelve a renderizar (Se actualiza) cuando se modifica el estado (state)
@@ -43,7 +46,7 @@ const Ejemplo = () => {
     console.log('Contador antes de aumentar', contador);
     setContador(contador + 1);
     console.log('Contador despues de aumentar', contador);
-    navigate('/otra');
+    //navigate('/otra');
   };
 
   //* useParams
@@ -52,11 +55,20 @@ const Ejemplo = () => {
   console.log(usuarios[id]);
 
   return (
-    <div style={{ border: '1px solid red' }}>
-      {/* Los estilos inline se colocan como objetos*/}
-      <h1>Contador: {contador}</h1>
-      <button onClick={aumentarContador}>Aumentar contador</button>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>Ejemplo</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          Ejemplo de bootstrap
+        </Card.Subtitle>
+        <Card.Text>
+          <h1>Contador: {contador}</h1>
+        </Card.Text>
+        <Button onClick={aumentarContador} variant="success">
+          Aumentar contador
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 

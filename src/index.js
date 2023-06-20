@@ -5,9 +5,13 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 //! 1.- Importamos BrowserRouter de react-router-dom
 import { BrowserRouter } from 'react-router-dom';
+//! Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+//! 2.- Encerramos la aplicación principal entre el nuevo componente
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//! 2.- Encerramos la aplicación principal entre el nuevo componente
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
