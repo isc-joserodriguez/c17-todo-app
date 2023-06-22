@@ -3,6 +3,7 @@ import Ejemplo from './Ejemplo';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import UserListPage from './pages/UserListPage';
 //! 1.- Importar Routes, Route
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -28,7 +29,7 @@ function App() {
   //! 2.- Separé las rutas entre rutas privadas & rutas públicas
   const privateRoutes = [
     <Route key={4} path="/otra" element={<h1>Otra</h1>} />,
-    <Route key={5} path="/usuarios" element={<h1>Lista Usuarios</h1>} />,
+    <Route key={45} path="/users" element={<UserListPage />} />,
   ]; //* Estas se muestran cuando mi usuario está autenticado
 
   const publicRoutes = [
@@ -79,11 +80,6 @@ function App() {
       <Navbar
         links={[
           {
-            to: '/',
-            text: 'Inicio',
-            show: true,
-          },
-          {
             to: '/login',
             text: 'Login',
             show: !token,
@@ -99,13 +95,13 @@ function App() {
             show: token,
           },
           {
-            to: '/usuarios',
+            to: '/users',
             text: 'Usuarios',
             show: token,
           },
           {
             to: '/ejemplo/0',
-            text: 'ejemplo',
+            text: 'Ejemplo',
             show: true,
           },
         ]}

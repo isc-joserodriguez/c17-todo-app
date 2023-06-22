@@ -61,9 +61,7 @@ const Ejemplo = () => {
         <Card.Subtitle className="mb-2 text-muted">
           Ejemplo de bootstrap
         </Card.Subtitle>
-        <Card.Text>
-          <h1>Contador: {contador}</h1>
-        </Card.Text>
+        <Card.Text className="h4">Contador: {contador}</Card.Text>
         <Button onClick={aumentarContador} variant="success">
           Aumentar contador
         </Button>
