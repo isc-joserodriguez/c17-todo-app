@@ -25,7 +25,7 @@ const UserListPage = () => {
   return (
     <Container>
       <h1>Lista de usuarios</h1>
-      <Button variant="success">Nuevo usuario</Button> <br />
+      <Link to="/users/new">Nuevo usuario</Link> <br />
       <br />
       {users.length ? (
         <Table striped="columns">

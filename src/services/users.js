@@ -19,3 +19,12 @@ export const getById = async (id) => {
   });
   return response.data;
 };
+
+export const createNew = async (data) => {
+  const response = await axios.post(usersUrl, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  return response.data;
+};

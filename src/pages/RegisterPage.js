@@ -30,7 +30,7 @@ const RegisterPage = ({ updateToken }) => {
     <>
       <label>Nombre</label>
       <input
-        id="nombre"
+        id="firstName"
         type="text"
         value={formValues.nombre}
         onChange={onChangeForm}
@@ -38,7 +38,7 @@ const RegisterPage = ({ updateToken }) => {
       <br />
       <label>Apellido</label>
       <input
-        id="apellido"
+        id="lastName"
         type="text"
         value={formValues.apellido}
         onChange={onChangeForm}
