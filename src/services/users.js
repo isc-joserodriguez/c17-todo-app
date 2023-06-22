@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-export const getAll = async (token) => {
-  const { data } = await axios.get(
-    'https://simple-server-ochre.vercel.app/users/',
-    {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-    }
-  );
-
-  return data;
+const baseUrl = 'https://simple-server-ochre.vercel.app';
+const usersUrl = `${baseUrl}/users`;
+export const getAll = async () => {
+  const response = await axios.get(usersUrl, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  return response.data;
 };
