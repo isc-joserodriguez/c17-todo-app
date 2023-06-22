@@ -10,6 +10,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 //! Importar imagen
 
 //! importar css
+import UserInfoPage from './pages/UserInfoPage';
 import './style.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
   const privateRoutes = [
     <Route key={4} path="/otra" element={<h1>Otra</h1>} />,
     <Route key={45} path="/users" element={<UserListPage />} />,
+    <Route key={46} path="/users/:id" element={<UserInfoPage />} />,
   ]; //* Estas se muestran cuando mi usuario está autenticado
 
   const publicRoutes = [

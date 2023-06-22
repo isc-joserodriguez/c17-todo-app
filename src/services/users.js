@@ -10,3 +10,12 @@ export const getAll = async () => {
   });
   return response.data;
 };
+
+export const getById = async (id) => {
+  const response = await axios.get(`${usersUrl}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  return response.data;
+};
