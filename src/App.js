@@ -10,6 +10,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 //! Importar imagen
 
 //! importar css
+import FirebasePage from './pages/FirebasePage';
 import NewUserPage from './pages/NewUserPage';
 import UserInfoPage from './pages/UserInfoPage';
 import './style.css';
@@ -114,7 +115,8 @@ function App() {
         {token && privateRoutes}
         {!token && publicRoutes}
         {generalRoutes}
-        <Route path="/ejemplo/:id" element={<Ejemplo />} />,
+        <Route path="/ejemplo/:id" element={<Ejemplo />} />
+        <Route path="/firebase" element={<FirebasePage />} />
       </Routes>
     </>
   );

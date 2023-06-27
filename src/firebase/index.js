@@ -14,5 +14,3 @@ initializeApp({
 
 //! 3.- Instanciar los servicios
 export const db = getFirestore();
-
-//! 4.- ????

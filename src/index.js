@@ -9,6 +9,8 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //! 2.- Encerramos la aplicación principal entre el nuevo componente
 
+//! Importamos script firebase
+import './firebase';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
