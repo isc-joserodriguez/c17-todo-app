@@ -120,7 +120,7 @@ function App() {
           {
             to: '/firebase',
             text: 'Firebase Ejemplo',
-            show: token,
+            show: true,
           },
           {
             to: '/ejemplo/0',
