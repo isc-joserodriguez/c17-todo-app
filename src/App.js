@@ -11,7 +11,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 //! importar css
 import FirebasePage from './pages/FirebasePage';
+/* import NewTaskPage from './pages/NewTaskPage'; */
 import NewUserPage from './pages/NewUserPage';
+/* import TasksListPage from './pages/TasksListPage';
+import UpdateTaskPage from './pages/UpdateTaskPage'; */
 import UserInfoPage from './pages/UserInfoPage';
 import './style.css';
 
@@ -35,6 +38,11 @@ function App() {
     <Route key={45} path="/users" element={<UserListPage />} />,
     <Route key={46} path="/users/:id" element={<UserInfoPage />} />,
     <Route key={47} path="/users/new" element={<NewUserPage />} />,
+    {
+      /* <Route key={48} path="/tasks" element={<TasksListPage />} />,
+    <Route key={49} path="/tasks/new" element={<NewTaskPage />} />,
+    <Route key={50} path="/tasks/update" element={<UpdateTaskPage />} />, */
+    },
   ]; //* Estas se muestran cuando mi usuario está autenticado
 
   const publicRoutes = [
@@ -102,6 +110,16 @@ function App() {
           {
             to: '/users',
             text: 'Usuarios',
+            show: token,
+          },
+          {
+            to: '/tasks',
+            text: 'Tareas',
+            show: token,
+          },
+          {
+            to: '/firebase',
+            text: 'Firebase Ejemplo',
             show: token,
           },
           {
