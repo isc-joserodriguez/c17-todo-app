@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
 
 const LoginPage = ({ updateToken }) => {
+  const navigate = useNavigate();
   //! 1.- Manejo del estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +26,7 @@ const LoginPage = ({ updateToken }) => {
     localStorage.setItem('token', respuesta.token);
     localStorage.setItem('userId', respuesta.userId);
     updateToken(respuesta.token);
+    navigate('/');
   };
 
   return (

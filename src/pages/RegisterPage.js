@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { register } from '../services/auth';
 
 const RegisterPage = ({ updateToken }) => {
+  const navigate = useNavigate();
   //! 1.- Crear los estados
   const [formValues, setFormValues] = useState({
     nombre: '',
@@ -24,6 +26,7 @@ const RegisterPage = ({ updateToken }) => {
     localStorage.setItem('token', respuesta.token);
     localStorage.setItem('userId', respuesta.userId);
     updateToken(respuesta.token);
+    navigate('/');
   };
 
   //! 3.- Agregar las funciones en los eventos
