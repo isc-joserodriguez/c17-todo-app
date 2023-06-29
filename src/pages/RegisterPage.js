@@ -22,6 +22,7 @@ const RegisterPage = ({ updateToken }) => {
     console.log(formValues);
     const respuesta = await register(formValues);
     localStorage.setItem('token', respuesta.token);
+    localStorage.setItem('userId', respuesta.userId);
     updateToken(respuesta.token);
   };
 

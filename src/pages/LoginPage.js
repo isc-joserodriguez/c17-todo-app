@@ -22,6 +22,7 @@ const LoginPage = ({ updateToken }) => {
       password,
     });
     localStorage.setItem('token', respuesta.token);
+    localStorage.setItem('userId', respuesta.userId);
     updateToken(respuesta.token);
   };
 
