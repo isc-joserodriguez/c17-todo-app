@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 
 //! 2.- Pasamos la configuración de nuestra app
 initializeApp({
-  apiKey: 'AIzaSyCvWzIic8WIZ72NMfwzYD4UkXD_Bgi1F2E',
-  authDomain: 'todo-app-acee0.firebaseapp.com',
-  projectId: 'todo-app-acee0',
-  storageBucket: 'todo-app-acee0.appspot.com',
-  messagingSenderId: '890808877056',
-  appId: '1:890808877056:web:196d23e3fee273f43f98e5',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 });
 
 //! 3.- Instanciar los servicios
