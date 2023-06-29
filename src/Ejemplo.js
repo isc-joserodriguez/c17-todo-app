@@ -40,7 +40,7 @@ const Ejemplo = () => {
   //! El array de dependencias va a controlar cuando se va a ejecutar el useEffect
 
   //* useNavigate
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const aumentarContador = () => {
     console.log('Contador antes de aumentar', contador);
