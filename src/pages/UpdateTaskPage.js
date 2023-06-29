@@ -1,54 +1,60 @@
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { db } from '../firebase';
 const UpdateTaskPage = () => {
+  const navigate = useNavigate();
   const { taskId } = useParams();
-  const [task, setTask] = useState({ title: '', description: '', place: '' });
+  const [task, setTask] = useState({ titulo: '', descripcion: '', lugar: '' });
 
   useEffect(() => {
-    // Reemplaza 'userId' con el ID de usuario actual si es necesario.
-    /* getTask('userId', taskId)
-      .then((fetchedTask) => setTask(fetchedTask))
-      .catch((error) => console.error(error)); */
+    const getTask = async () => {
+      const docRef = doc(db, 'tasks', taskId);
+      const task = await getDoc(docRef);
+      setTask({ ...task.data(), id: task.id });
+    };
+    getTask();
   }, [taskId]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Aquí debes realizar la actualización de la tarea en tu backend
+    const docRef = doc(db, 'tasks', taskId);
+    await setDoc(docRef, task);
+    navigate('/tasks');
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="taskTitle">
+      <Form.Group className="mb-3" controlId="tasktitulo">
         <Form.Label>Título</Form.Label>
         <Form.Control
           type="text"
-          name="title"
-          value={task.title}
-          onChange={(event) => setTask({ ...task, title: event.target.value })}
+          name="titulo"
+          value={task.titulo}
+          onChange={(event) => setTask({ ...task, titulo: event.target.value })}
           placeholder="Escribe el título de la tarea"
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="taskDescription">
+      <Form.Group className="mb-3" controlId="taskdescripcion">
         <Form.Label>Descripción</Form.Label>
         <Form.Control
           type="text"
-          name="description"
-          value={task.description}
+          name="descripcion"
+          value={task.descripcion}
           onChange={(event) =>
-            setTask({ ...task, description: event.target.value })
+            setTask({ ...task, descripcion: event.target.value })
           }
           placeholder="Escribe una descripción"
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="taskPlace">
+      <Form.Group className="mb-3" controlId="tasklugar">
         <Form.Label>Lugar</Form.Label>
         <Form.Control
           type="text"
-          name="place"
-          value={task.place}
-          onChange={(event) => setTask({ ...task, place: event.target.value })}
+          name="lugar"
+          value={task.lugar}
+          onChange={(event) => setTask({ ...task, lugar: event.target.value })}
           placeholder="Escribe el lugar"
         />
       </Form.Group>

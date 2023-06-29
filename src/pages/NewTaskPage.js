@@ -1,9 +1,24 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
+import { addDoc, collection } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { db } from '../firebase';
+
 const NewTaskPage = () => {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
+    try {
+      const dataForm = new FormData(event.target);
+      const obj = Object.fromEntries(dataForm);
+      //! Firestore
+      const coleccion = collection(db, 'tasks');
+      addDoc(coleccion, obj);
+      navigate('/tasks/');
+    } catch (e) {
+      alert('Hey, te equivocaste en algo, revisa tus datos');
+    }
   };
 
   return (

@@ -40,7 +40,11 @@ function App() {
     <Route key={47} path="/users/new" element={<NewUserPage />} />,
     <Route key={48} path="/tasks" element={<TasksListPage />} />,
     <Route key={49} path="/tasks/new" element={<NewTaskPage />} />,
-    <Route key={50} path="/tasks/update" element={<UpdateTaskPage />} />,
+    <Route
+      key={50}
+      path="/tasks/update/:taskId"
+      element={<UpdateTaskPage />}
+    />,
   ]; //* Estas se muestran cuando mi usuario está autenticado
 
   const publicRoutes = [

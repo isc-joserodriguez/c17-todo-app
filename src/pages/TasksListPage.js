@@ -1,22 +1,23 @@
+import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
-const TasksListPage = ({ userId }) => {
-  const [tasks, setTasks] = useState([
-    {
-      titulo: 'Comprar jugo',
-      descripcion: 'Ir a la tienda',
-      lugar: 'Tienda de la esquina',
-    },
-  ]);
+import { Link, useNavigate } from 'react-router-dom';
+import { db } from '../firebase';
+const TasksListPage = () => {
+  const navigate = useNavigate();
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const getAllTasks = () => {
-      console.log('getAllTasks for user ' + userId);
-    };
-    getAllTasks();
-  }, [userId]);
+    const collectionName = collection(db, 'tasks');
+    onSnapshot(collectionName, (snapshot) => {
+      setTasks(
+        snapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      );
+    });
+  }, []);
 
   return (
     <>
@@ -35,13 +36,28 @@ const TasksListPage = ({ userId }) => {
         <tbody>
           {tasks.map((task, index) => (
             <tr key={index}>
-              <td>{index + 1}</td>
+              <td>{task.id}</td>
               <td>{task.titulo}</td>
               <td>{task.descripcion}</td>
               <td>{task.lugar}</td>
               <td>
-                <Button variant="warning">Editar</Button>
-                <Button variant="danger">Eliminar</Button>
+                <Button
+                  variant="warning"
+                  onClick={() => {
+                    navigate('/tasks/update/' + task.id);
+                  }}
+                >
+                  Editar
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    const decRef = doc(db, 'tasks', task.id);
+                    deleteDoc(decRef);
+                  }}
+                >
+                  Eliminar
+                </Button>
               </td>
             </tr>
           ))}
